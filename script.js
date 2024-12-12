@@ -36,33 +36,20 @@ function calculateBMI() {
     
     const bmiImage = document.querySelector('#bmi-image');
     if (bmiImage) {
+        bmiImage.classList.remove("lazy-image");
+        bmiImage.removeAttribute('data-src');
         bmiImage.src = imagePath;
-        bmiImage.dataset.src = imagePath;
         bmiImage.style.display = 'block';
     }
 } 
 
-// 修改懒加载实现
 document.addEventListener("DOMContentLoaded", function() {
-    const lazyImages = document.querySelectorAll("img.lazy-image");
-    
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.classList.remove("lazy-image");
-                    observer.unobserve(img);
-                }
-            }
-        });
-    });
-
-    lazyImages.forEach(img => imageObserver.observe(img));
+    const bmiImage = document.querySelector('#bmi-image');
+    if (bmiImage) {
+        bmiImage.style.display = 'none';
+    }
 });
 
-// 修改图片加载失败处理
 document.addEventListener('error', function(e) {
     if (e.target.tagName.toLowerCase() === 'img') {
         e.target.src = './images/default.jpg';
