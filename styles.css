@@ -1,0 +1,164 @@
+:root {
+    --mac-bg: #f5f5f7;
+    --mac-card: rgba(255, 255, 255, 0.95);
+    --mac-primary: #0071e3;
+    --mac-text: #1d1d1f;
+    --mac-secondary-text: #86868b;
+    --mac-border: #d2d2d7;
+}
+
+body {
+    background-image: url('./images/bj.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: var(--mac-text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 680px;
+    margin: 40px auto;
+    background-color: var(--mac-card);
+    border-radius: 18px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--mac-text);
+}
+
+h1 span {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.input-group {
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-size: 14px;
+    color: var(--mac-secondary-text);
+    margin-bottom: 8px;
+    width: 100%;
+    max-width: 300px;
+}
+
+input {
+    width: 100%;
+    max-width: 300px;
+    height: 44px;
+    padding: 0 16px;
+    border: 1px solid var(--mac-border);
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--mac-primary);
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+}
+
+button {
+    background-color: var(--mac-primary);
+    color: white;
+    border: none;
+    border-radius: 22px;
+    padding: 12px 32px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 32px auto;
+    display: block;
+    min-width: 200px;
+}
+
+button:hover {
+    background-color: #0077ED;
+    transform: scale(1.02);
+}
+
+.result-container {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--mac-border);
+    text-align: center;
+}
+
+#bmi-value {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--mac-primary);
+    margin-bottom: 16px;
+}
+
+#bmi-category {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+#advice {
+    color: var(--mac-secondary-text);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+#bmi-image {
+    max-width: 280px;
+    border-radius: 12px;
+    margin: 24px auto;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 20px auto;
+        padding: 24px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    input {
+        max-width: 100%;
+    }
+}
+
+.lazy-image {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.lazy-image[src] {
+    opacity: 1;
+}
+
+/* 为图片添加渐进式加载效果 */
+.lazy-image {
+    filter: blur(5px);
+}
+
+.lazy-image[src] {
+    filter: blur(0);
+    transition: filter 0.3s ease-in-out;
+}
